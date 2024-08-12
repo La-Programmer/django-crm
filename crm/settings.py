@@ -11,17 +11,19 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-r)kpm*akiyq!ts36z41lxe!b&9s0$b%y-pt*-u*00bcd9r-q_t'
-
+DB_PASSWD = os.environ.get('DB_PASSWD')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -79,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'botanist',
         'USER': 'root',
-        'PASSWORD': 'j1u2s3t4i5n6',
+        'PASSWORD': DB_PASSWD,
         'HOST': 'localhost',
         'PORT': '3306',
     }
